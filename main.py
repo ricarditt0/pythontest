@@ -10,6 +10,9 @@ numballs = 50
 balls = Circle.randBalls(numballs)
 hitbox = [(30,30),(30,690),(1250,690),(1250,30)]
 
+for ball in balls:
+        print(ball)
+
 while True:
     # Process player inputs.
     pressed = pygame.key.get_pressed()
@@ -34,7 +37,7 @@ while True:
     pygame.draw.polygon(surface=screen,color="white",points=hitbox,width=3)
 
     for ball in balls:
-        pygame.draw.circle(surface = screen, color=ball.color,center=(ball.getCenter()),radius=ball.radius, width=0)
+        pygame.draw.circle(surface = screen, color=ball.color,center=(ball.center),radius=ball.radius, width=0)
 
     pygame.display.flip()  # Refresh on-screen display
     clock.tick(60)         # wait until next frame (at 60 FPS)

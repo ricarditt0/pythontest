@@ -1,24 +1,29 @@
-from Point import Point
 import random
+import pygame
+import math
 
-class Circle(Point):
-    def __init__(self,x,y,radius,moveX,moveY,color):
+class Circle():
+    def __init__(self,center,radius,speed,color):
         self.radius = radius
-        self.moveX = moveX
-        self.moveY = moveY
+        self.speed = pygame.math.Vector2(speed)
         self.color = color
-        Point.__init__(self,x,y)
+        self.center = pygame.math.Vector2(center)
+
+    def __str__(self) -> str:
+        return f"{self.speed}"
+    
+    def distance(self ,another) -> float:
+        deltaX = self.center.x - another.center.x
+        deltaY = self.center.y - another.center.y
+        distance = math.sqrt(deltaX**2 + deltaY**2)
+        return distance
 
     def move(self):
-        self.x = self.x + self.moveX
-        self.y = self.y + self.moveY
-
-    def getCenter(self):
-        return [self.x,self.y]
+       self.center = self.center + self.speed
     
-    def randBalls(num):
+    def randBalls(num) -> list:
         colors = ["red","green","purple","pink","blue","orange","brown","gray","cyan"]
         listBoll = []
         for i in range(0,num):
-            listBoll.append(Circle(x=random.randint(30,1250),y=random.randint(30,690),radius=12,moveX=random.uniform(-2,2),moveY=random.uniform(-2,2),color=random.choice(colors)))
+            listBoll.append(Circle(center=(random.randint(30,1250),random.randint(30,690)),radius=12,speed=(random.uniform(-2,2),random.uniform(-2,2)),color=random.choice(colors)))
         return listBoll
