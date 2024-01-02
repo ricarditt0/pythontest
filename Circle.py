@@ -8,6 +8,7 @@ class Circle():
         self.speed = pygame.math.Vector2(speed)
         self.color = color
         self.center = pygame.math.Vector2(center)
+        self.mass = radius
 
     def __str__(self) -> str:
         return f"{self.speed}"

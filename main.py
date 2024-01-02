@@ -6,12 +6,10 @@ pygame.init()
 screen = pygame.display.set_mode((1280,720))
 clock = pygame.time.Clock()
 
-numballs = 50
+numballs = 100
 balls = Circle.randBalls(numballs)
 hitbox = [(30,30),(30,690),(1250,690),(1250,30)]
 
-for ball in balls:
-        print(ball)
 
 while True:
     # Process player inputs.
@@ -28,8 +26,10 @@ while True:
     for ball in balls:
         ball.move()
         Collision.wallCircle(ball)
-        for b in balls:
-            Collision.ballBall(ball,b)
+        for b in balls[1:]:
+            if (b != ball) and Collision.ballBall(ball,b):
+                Collision.elasticCollision(ball,b)
+
 
     screen.fill("black")  # Fill the display with a solid color
 
