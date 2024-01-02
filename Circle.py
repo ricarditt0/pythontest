@@ -26,5 +26,5 @@ class Circle():
         colors = ["red","green","purple","pink","blue","orange","brown","gray","cyan"]
         listBoll = []
         for i in range(0,num):
-            listBoll.append(Circle(center=(random.randint(30,1250),random.randint(30,690)),radius=12,speed=(random.uniform(-2,2),random.uniform(-2,2)),color=random.choice(colors)))
+            listBoll.append(Circle(center=(random.randint(80,1200),random.randint(80,640)),radius=15,speed=(random.uniform(-2,2),random.uniform(-2,2)),color=random.choice(colors)))
         return listBoll

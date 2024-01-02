@@ -9,15 +9,14 @@ def wallCircle(Circle):
         Circle.speed.y  =  Circle.speed.y*-1
 
 def ballBall(ball0,ball1)->bool:
-    if ball0.distance(ball1) <= ball0.radius + ball1.radius:
+    if ball0.distance(ball1) == 0:
+        return False
+    elif ball0.distance(ball1) <= ball0.radius + ball1.radius:
         return True
     else:
         return False
-        # ball0.speed = ball0.speed * -1
-        # ball1.speed = ball1.speed * -1
 
 def elasticCollision(ball0,ball1):
-    print((ball0.center - ball1.center))
     velocity0 = (
         ball0.speed - ((2*ball1.mass)/(ball0.mass + ball1.mass))*
         (pygame.math.Vector2.dot((ball0.speed - ball1.speed),(ball0.center - ball1.center))/
